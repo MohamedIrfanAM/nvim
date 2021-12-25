@@ -66,8 +66,8 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		-- component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
 	},
@@ -91,3 +91,11 @@ lualine.setup({
 	tabline = {},
 	extensions = {},
 })
+
+local custom_nord = require'lualine.themes.nord'
+-- Change the background of lualine_c section for normal mode
+custom_nord.insert.a.bg = '#81A1C1' -- rgb colors are supported
+require'lualine'.setup{
+  options = { theme  = custom_nord },
+  ...
+}
