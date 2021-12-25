@@ -75,5 +75,14 @@
     "map <${1:int},${2:int}> ${3:m}${0};"
   ],
   "description": "Declare a map"
+  },
+  "Debug output ": {
+    "prefix": "dbug",
+    "body": [
+      "#ifdef IRFAN_DEBUG",
+      "  coutc << ${VISUAL}${0} << endlc;",
+      "#endif"
+    ],
+    "description": "Debug output "
   }
 }
