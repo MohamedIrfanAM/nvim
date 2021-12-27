@@ -11,40 +11,7 @@ ls.config.set_config {
   delete_check_events = "InsertLeave",
   enable_autosnippets = true,
 }
-
-ls.snippets = {
-  lua = {
-    -- credit: akinsho
-    snippet({
-      trig = "use",
-      name = "packer use",
-      dscr = {
-        "packer use plugin block",
-        "e.g.",
-        "use {'author/plugin'}",
-      },
-    }, {
-      text "use { '",
-      -- Get the author and URL in the clipboard and auto populate the author and project
-      f(function(_)
-        local default = "author/plugin"
-        local clip = vim.fn.getreg "*"
-        if not vim.startswith(clip, "https://github.com/") then
-          return default
-        end
-        local parts = vim.split(clip, "/")
-        if #parts < 2 then
-          return default
-        end
-        local author, project = parts[#parts - 1], parts[#parts]
-        return author .. "/" .. project
-      end, {}),
-      text "' ",
-      insert(2, { ", config = function()", "", "end" }),
-      text "}",
-    }),
-  },
-}
+ls.config.setup({store_selection_keys="<Tab>"})
 
 require("luasnip.loaders.from_vscode").load {
   paths = vim.fn.stdpath "config" .. "/snippets",

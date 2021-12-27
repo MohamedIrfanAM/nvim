@@ -19,7 +19,7 @@
     "{",
     "	for(int j = 0; j < ${2:Count1}; j++)",
     "	{",
-    "		${VISUAL}$3",
+    "		$TM_SELECTED_TEXT$3",
     "	}",
     "}",
     ""
@@ -31,7 +31,7 @@
     "body": [
       "for(int ${3:i} = 0; $3 < ${1:count}; $3${4:++}) ",
       "{",
-      "	${VISUAL}${2}${5}",
+      "	$TM_SELECTED_TEXT${2}${5}",
       "}",
       ""
     ],
@@ -42,7 +42,7 @@
     "body": [
       "for (int ${2:i} = 0; $2 < ${1:count}; ${3:$2++})",
       "{",
-      "	${VISUAL}${4}",
+      "	$TM_SELECTED_TEXT${4}",
       "}"
     ],
     "description": "standard for loop"
@@ -76,13 +76,23 @@
   ],
   "description": "Declare a map"
   },
-  "Debug output ": {
+  "Debug content": {
     "prefix": "dbug",
     "body": [
       "#ifdef IRFAN_DEBUG",
-      "  coutc << ${VISUAL}${0} << endlc;",
+      " $TM_SELECTED_TEXT",
       "#endif"
     ],
-    "description": "Debug output "
+    "description": "Debug content inside"
+  },
+  "Debug ": {
+  "prefix": "debug",
+  "body": [
+    "#ifdef IRFAN_DEBUG",
+    "  $TM_SELECTED_TEXT",
+    "  coutc << ${0} << endlc;",
+    "#endif"
+  ],
+  "description": "Debug "
   }
 }
