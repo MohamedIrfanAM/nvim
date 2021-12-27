@@ -70,7 +70,7 @@ nvim_tree.setup {
   },
   filters = {
     dotfiles = false,
-    custom = {'*.ans1','*.out1','*.in1','.exe'},
+    custom = {'*.ans1','*.out1','*.in1','.exe','*.ans2','*.out2','*.in2','*.ans3','*.out3','*.in3','*.ans4','*.out4','*.in4','*.ans5','*.out5','*.in5','*.ans6','*.out6','*.in6','*.ans7','*.out7','*.in7'},
   },
   git = {
     enable = true,
