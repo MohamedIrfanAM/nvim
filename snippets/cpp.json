@@ -2,7 +2,7 @@
   "for inputing to a vector": {
     "prefix": "inp",
     "body": [
-      "vector<${1:int}> ${2:arr}(${3:n};",
+      "vector<${1:int}> ${2:arr}(${3:n});",
       "for(int i = 0; i < $3; i++)",
       "{",
       "	cin >> $2[i];",
