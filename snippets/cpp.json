@@ -77,22 +77,20 @@
   "description": "Declare a map"
   },
   "Debug content": {
-    "prefix": "dbug",
+    "prefix": "debug",
     "body": [
       "#ifdef IRFAN_DEBUG",
       " $TM_SELECTED_TEXT",
+      " ${0}",
       "#endif"
     ],
     "description": "Debug content inside"
   },
-  "Debug ": {
-  "prefix": "debug",
+  "Red color output ": {
+  "prefix": "rout",
   "body": [
-    "#ifdef IRFAN_DEBUG",
-    "  $TM_SELECTED_TEXT",
-    "  coutc << ${0} << endlc;",
-    "#endif"
+    "  cout_red << ${0} << endl_red;"
   ],
-  "description": "Debug "
+  "description": "Red color output "
   }
 }
