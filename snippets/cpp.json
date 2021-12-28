@@ -89,7 +89,7 @@
   "Red color output ": {
   "prefix": "rout",
   "body": [
-    "  cout_red << ${0} << endl_red;"
+    "  cout << \"\\033[48;5;196m\\033[38;5;15m\" << ${0} << \"\\033[0m\" << endl;"
   ],
   "description": "Red color output "
   }
