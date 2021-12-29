@@ -96,6 +96,8 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  ["m"] = { "<cmd>%s/\r$//<cr>", "Remove ^M" },
+  r = { ":%s/findtext/text/g" },
 
   p = {
     name = "Packer",
