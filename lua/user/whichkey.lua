@@ -96,8 +96,9 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  ["m"] = { "<cmd>%s/\r$//<cr>", "Remove ^M" },
-  r = { ":%s/findtext/text/g" },
+  ["m"] = { "<cmd>%s/\\r$//<cr>", "Remove ^M" },
+  ["r"] = { "<cmd>lua require('substitute.range').word()<cr>","Replace Text" },
+  ["R"] = { "<cmd>lua require('substitute.range').operator()<cr>","Replace Text" },
 
   p = {
     name = "Packer",
@@ -186,5 +187,20 @@ local mappings = {
   },
 }
 
+local vopts = {
+  mode = "v", -- Visual mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+local vmappings = {
+  ["r"] = { "<cmd>lua require('substitute.range').visual()<cr>","Replace Text" },
+  ["/"] = {"<ECS><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment"},
+}
+
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(vmappings, vopts)
