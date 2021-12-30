@@ -98,7 +98,6 @@ local mappings = {
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
   ["m"] = { "<cmd>%s/\\r$//<cr>", "Remove ^M" },
   ["r"] = { "<cmd>lua require('substitute.range').word()<cr>","Replace Text" },
-  ["R"] = { "<cmd>lua require('substitute.range').operator()<cr>","Replace Text" },
 
   p = {
     name = "Packer",
@@ -197,7 +196,7 @@ local vopts = {
 }
 local vmappings = {
   ["r"] = { "<cmd>lua require('substitute.range').visual()<cr>","Replace Text" },
-  ["/"] = {"<ECS><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment"},
+  ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
 }
 
 
