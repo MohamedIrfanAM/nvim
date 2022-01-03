@@ -5,7 +5,14 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
-    autocmd TextChanged *.ans[1-9],*.in[1-9] %s/\r$/
+  augroup end
+
+  augroup _cp
+    autocmd!
+    autocmd TextChanged *.ans[1-9],*.in[1-9] silent! %s/\r$/
+    let last_cursor_found = 1
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
+    autocmd BufReadPost *.cpp if last_cursor_found == 0 | 18 call feedkeys("i\<right>\<right>")  | endif
   augroup end
 
   augroup _git
