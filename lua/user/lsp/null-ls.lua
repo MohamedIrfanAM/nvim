@@ -12,6 +12,8 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.stylua,
-    diagnostics.cppcheck
+    diagnostics.cppcheck.with({
+        method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+    }),
 	},
 })
