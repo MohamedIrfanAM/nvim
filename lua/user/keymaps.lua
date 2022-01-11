@@ -36,8 +36,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-k>", ":bnext<CR>", opts)
-keymap("n", "<S-j>", ":bprevious<CR>", opts)
+keymap("n", "<S-k>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-j>", ":BufferLineCyclePrev<CR>", opts)
 
 -- CP Booster
 keymap("n", "<a-t>", ":Test<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
