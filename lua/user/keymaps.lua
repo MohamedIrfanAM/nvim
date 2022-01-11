@@ -42,10 +42,10 @@ keymap("n", "<S-j>", ":BufferLineCyclePrev<CR>", opts)
 -- CP Booster
 keymap("n", "<a-t>", ":Test<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
 keymap("n", "<a-T>", ":Rtest<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
-keymap("n", "<a-d>", ":Debug<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
-keymap("n", "<a-D>", ":Rdebug<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
+keymap("n", "<a-d>", ":Debug<CR><C-\\><C-n>:vertical resize 40<CR>i", opts)
+keymap("n", "<a-D>", ":Rdebug<CR><C-\\><C-n>:vertical resize 40<CR>i", opts)
 keymap("n", "<a-s>", ":Submit<CR><C-w>l:vertical resize 40<CR><C-w>h", opts)
-keymap("n", "<a-a>", ":Addtc<CR>", opts)
+keymap("n", "<a-a>", ":Addtc<CR>:vertical resize 40<CR>", opts)
 
 -- Standard bindings
 keymap("n", "<C-w>", ":Bdelete!<CR>",opts)
