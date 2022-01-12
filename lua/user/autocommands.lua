@@ -13,6 +13,7 @@ vim.cmd [[
     let last_cursor_found = 1
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
     autocmd BufReadPost *.cpp if last_cursor_found == 0 | 18 call feedkeys("i\<right>\<right>")  | endif
+    autocmd BufWinEnter *.ans[1-9],*.in[1-9] set nobuflisted
   augroup end
 
   augroup _git
