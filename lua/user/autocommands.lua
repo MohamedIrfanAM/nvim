@@ -13,7 +13,7 @@ vim.cmd [[
     autocmd InsertEnter * :let @/=""
     let last_cursor_found = 1
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
-    autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/solve\<CR>:\<BS>\<ESC>o") | endif
+    autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/while(tst--)\<CR>:\<BS>\<ESC>2j2li") | endif
     autocmd BufWinEnter *.ans[1-9],*.in[1-9] set nobuflisted
   augroup end
 

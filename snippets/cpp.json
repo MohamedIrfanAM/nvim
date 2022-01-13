@@ -3,7 +3,8 @@
     "prefix": "inp",
     "body": [
       "vector<${1:int}> ${2:arr}(${3:n});",
-      "for(int i = 0; i < $3; i++) {",
+      "for(int i = 0; i < $3; i++)",
+      "{",
       "	cin >> $2[i];",
       "}",
       "${0}",
@@ -14,8 +15,10 @@
   "Nested Loop": {
   "prefix": "forfor",
   "body": [
-    "for(int i = 0; i < ${1:Count1}; i++) {",
-    "	for(int j = 0; j < ${2:Count2}; j++) {",
+    "for(int i = 0; i < ${1:Count1}; i++)",
+    "{",
+    "	for(int j = 0; j < ${2:Count2}; j++)",
+    " {",
     "		$TM_SELECTED_TEXT${0}",
     "	}",
     "}",
@@ -26,7 +29,8 @@
   "for loop with i": {
     "prefix": "fori",
     "body": [
-      "for(int i = 0; i < ${1:count}; i++) {",
+      "for(int i = 0; i < ${1:count}; i++)",
+      "{",
       "	$TM_SELECTED_TEXT${0}",
       "}",
       ""
@@ -36,7 +40,8 @@
   "standard for loop": {
     "prefix": "for",
     "body": [
-      "for (int ${1:i} = 0; $1 < ${2:count}; $1++) {",
+      "for (int ${1:i} = 0; $1 < ${2:count}; $1++)",
+      "{",
       "	$TM_SELECTED_TEXT${0}",
       "}"
     ],
