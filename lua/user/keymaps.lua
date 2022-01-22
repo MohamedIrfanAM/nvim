@@ -56,6 +56,7 @@ vim.cmd [[ command! -nargs=1 Include  call feedkeys("mZ") | call timer_start(1, 
 keymap("n", "<C-w>", ":Bdelete!<CR>",opts)
 keymap("n", "<C-e>", ":NvimTreeToggle<cr>",opts)
 keymap("n", "<C-s>", ":w><cr>",opts)
+keymap("n", "<C-a>", "mZgg0yG`Z",opts)
 
 -- Insert --
 -- Press jk fast to enter
