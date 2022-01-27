@@ -15,6 +15,7 @@ vim.cmd [[
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
     autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/while(tst--)\<CR>:\<BS>\<ESC>2j2li") | endif
     autocmd BufWinEnter *.ans[1-9],*.in[1-9] set nobuflisted
+    autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
   augroup end
 
   augroup _git
