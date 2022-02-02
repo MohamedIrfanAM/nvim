@@ -6,7 +6,8 @@ end
 local servers = {
   "sumneko_lua",
   "clangd",
-  "texlab"
+  "texlab",
+  "ltex"
 }
 
 for _, name in pairs(servers) do
