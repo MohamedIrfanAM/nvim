@@ -62,6 +62,7 @@ return packer.startup(function(use)
   use "ggandor/lightspeed.nvim" -- jumpt anywhere within file
   use "gbprod/substitute.nvim" -- replace text
   use "RRethy/vim-illuminate"
+  use "lervag/vimtex"
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out

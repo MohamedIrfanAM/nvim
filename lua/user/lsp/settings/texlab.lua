@@ -8,8 +8,8 @@ return {
         build = {
           args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
           executable = "latexmk",
-          forwardSearchAfter = true,
-          onSave = true,
+          forwardSearchAfter = false,
+          onSave = false,
         },
         chktex = {
           onEdit = true,
