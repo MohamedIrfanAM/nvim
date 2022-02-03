@@ -18,12 +18,24 @@ vim.cmd [[
     autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
   augroup end
 
+
+  function! CloseViewers()
+    if executable('xdotool')
+          \ && exists('b:vimtex.viewer.xwin_id')
+          \ && b:vimtex.viewer.xwin_id > 0
+      call system('xdotool windowclose '. b:vimtex.viewer.xwin_id)
+    endif
+  endfunction
   augroup _vimtex
     autocmd!
     autocmd FileType tex setlocal wrap
-    autocmd User VimtexEventView call b:vimtex.viewer.xdo_focus_vim()
-    autocmd BufReadPost *.tex call feedkeys("\<space>ll")
-    autocmd BufWritePost *.tex call timer_start(1000, { tid -> execute('call feedkeys("\<space>lv")')})  
+    autocmd User VimtexEventInitPost VimtexCompile
+    autocmd User VimtexEventCompileSuccess VimtexView
+    autocmd BufWritePost *.tex VimtexView
+    autocmd User VimtexEventView  call timer_start(0, { tid -> execute('call b:vimtex.viewer.xdo_focus_vim()')})
+    autocmd User VimtexEventViewReverse normal! zMzvzz
+    autocmd User VimtexEventQuit VimtexClean 
+    autocmd User VimtexEventQuit call CloseViewers()
   augroup end
 
   augroup _git
