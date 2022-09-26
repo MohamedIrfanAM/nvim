@@ -3,7 +3,10 @@ if not cmp_status_ok then
   return
 end
 
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+local snip_status_ok, cmp_ultisnips_mappings = pcall(require, "cmp_nvim_ultisnips.mappings")
+if not snip_status_ok then
+  return
+end
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
@@ -38,97 +41,97 @@ local kind_icons = {
 cmp.setup {
   snippet = {
     expand = function(args)
-        vim.fn["UltiSnips#Anon"](args.body)
+      vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   mapping = {
 
     ["<Tab>"] = cmp.mapping({
-        c = function()
-            if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-            else
-                cmp.complete()
-            end
-        end,
-        i = function(fallback)
-            cmp_ultisnips_mappings.compose { "expand","jump_forwards","select_next_item" } (fallback)
-        end,
-        s = function(fallback)
-            cmp_ultisnips_mappings.compose { "expand","jump_forwards","select_next_item" } (fallback)
-        end,
-        x = function()
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(ultisnips_expand)",true,true,true),'m', true)
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          cmp.complete()
         end
+      end,
+      i = function(fallback)
+        cmp_ultisnips_mappings.compose { "expand", "jump_forwards", "select_next_item" } (fallback)
+      end,
+      s = function(fallback)
+        cmp_ultisnips_mappings.compose { "expand", "jump_forwards", "select_next_item" } (fallback)
+      end,
+      x = function()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(ultisnips_expand)", true, true, true), 'm', true)
+      end
     }),
     ["<S-Tab>"] = cmp.mapping({
-        c = function()
-            if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-            else
-                cmp.complete()
-            end
-        end,
-        i = function(fallback)
-            cmp_ultisnips_mappings.compose {"jump_backwards","select_prev_item" } (fallback)
-        end,
-        s = function(fallback)
-            cmp_ultisnips_mappings.compose {"jump_backwards","select_prev_item" } (fallback)
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          cmp.complete()
         end
+      end,
+      i = function(fallback)
+        cmp_ultisnips_mappings.compose { "jump_backwards", "select_prev_item" } (fallback)
+      end,
+      s = function(fallback)
+        cmp_ultisnips_mappings.compose { "jump_backwards", "select_prev_item" } (fallback)
+      end
     }),
 
     ['<C-j>'] = cmp.mapping({
-        c = function()
-            if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-            else
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Down>',true,true,true), 'n', true)
-            end
-        end,
-        i = function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert})
-            else
-                fallback()
-            end
+      c = function()
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Down>', true, true, true), 'n', true)
         end
+      end,
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          fallback()
+        end
+      end
     }),
     ['<C-k>'] = cmp.mapping({
-        c = function()
-            if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-            else
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Up>',true,true,true), 'n', true)
-            end
-        end,
-        i = function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-            else
-                fallback()
-            end
+      c = function()
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Up>', true, true, true), 'n', true)
         end
+      end,
+      i = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+          fallback()
+        end
+      end
     }),
 
-    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
-    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
+    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
 
 
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<C-e>'] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.abort() }),
 
     ['<CR>'] = cmp.mapping({
-        i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-        c = function(fallback)
-            if cmp.visible() then
-                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-            else
-                fallback()
-            end
+      i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+      c = function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+        else
+          fallback()
         end
+      end
     })
 
   },
@@ -157,8 +160,10 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
   },
   experimental = {
     ghost_text = true,
@@ -167,19 +172,19 @@ cmp.setup {
 }
 -- Use buffer source for `/`.
 cmp.setup.cmdline('/', {
-    completion = { autocomplete = false },
-    sources = {
-        -- { name = 'buffer' }
-        { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
-    }
+  completion = { autocomplete = false },
+  sources = {
+    -- { name = 'buffer' }
+    { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
+  }
 })
 
 -- Use cmdline & path source for ':'.
 cmp.setup.cmdline(':', {
-    completion = { autocomplete = false },
-    sources = cmp.config.sources({
-        { name = 'path' }
-        }, {
-        { name = 'cmdline' }
-    })
+  completion = { autocomplete = false },
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
 })

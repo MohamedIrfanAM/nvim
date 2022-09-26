@@ -85,7 +85,7 @@ local mappings = {
     "Buffers",
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["/"] = {"<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"},
+  ["/"] = {"<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment"},
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -187,7 +187,7 @@ local vopts = {
 }
 local vmappings = {
   ["r"] = { "<cmd>lua require('substitute.range').visual()<cr>","Replace Text" },
-  ["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+  ["/"] = { "<ESC><CMD>lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>", "Comment" },
 }
 
 
