@@ -8,15 +8,35 @@ vim.cmd [[
     autocmd InsertEnter * :let @/=""
   augroup end
 
+  function! CloseCpBoosterBuffer()
+    redir => buffersoutput
+    buffers a
+    redir END
+    exec 'redraw'
+    let total_buffers = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let buflist = split(buffersoutput,"\n")
+    let pattern = '.*term:.*cpbooster.*'
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && bufname(v:val) =~ "'.pattern.'"')
+    if (len(buflist) == 1 && bufname() =~ pattern)
+      if (total_buffers == 2)
+        !awesome-client 'require("awful").screen.focused().selected_tag.gap = 2' 
+        exec 'qa'
+      elseif (total_buffers > 2)
+        exec 'bd! '.join(buffers, ' ')
+        exec 'bd!'
+      endif
+    endif
+  endfunction
   augroup _cp
     autocmd!
     autocmd TextChanged *.ans[1-9],*.in[1-9] silent! %s/\r$/
     let last_cursor_found = 1
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
     autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/while(tst--)\<CR>:\<BS>\<ESC>2j2li") | endif
-    autocmd FileType cpp !awesomegap-cpp.sh % 0
-    autocmd ExitPre *.cpp !awesomegap-cpp.sh % 1
+    autocmd FileType cpp silent !awesomegap-cpp.sh % 0
+    autocmd ExitPre *.cpp silent !awesomegap-cpp.sh % 1
     autocmd BufWinEnter *.ans[1-9],*.in[1-9] set nobuflisted
+    autocmd BufEnter * call CloseCpBoosterBuffer()
     autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
   augroup end
 
