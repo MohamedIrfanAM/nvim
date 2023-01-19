@@ -1,5 +1,5 @@
 snippet inp "Input in to an vector" b
-vector<${1:int}> ${2:arr}(${3:n})
+vector<${1:int}> ${2:v}(${3:n})
 for(int i = 0; i < $3; i++)
 {
 	cin >> $2[i];
@@ -18,9 +18,9 @@ for(int i = 0; i < ${1:Count1}; i++)
 endsnippet
 
 snippet fori "For Loop with i" A
-for(int ${3:i} = 0; $3 < ${1:count}; $3${4:++}) 
+for(int i = 0; i < ${1:count}; i++}) 
 {
-	${VISUAL}${2}${5}
+	${VISUAL}${0}
 }
 endsnippet
 
@@ -32,27 +32,43 @@ for (int ${2:i} = 0; $2 < ${1:count}; $2++})
 endsnippet
 
 snippet v "Declare a Vector" i
-vector <${1:int}> ${2:v}${0};
+vector <${1:int}> ${2:v}${0}
+endsnippet
+
+snippet vii "Declare a Vector of integers" A
+vector<int> ${1:v}${0}
 endsnippet
 
 snippet p "Declare a pair" i
-pair <${1:int},${2:int}> ${3:p}${0};
+pair<${1:int},${2:int}> ${3:p}${0}
 endsnippet
 
-snippet s "Declare a Set" i
-set <${1:int}> ${2:s}${0};
+snippet pii "Declare a pair with integers" A
+pair <int,int> ${1:p}${0}
+endsnippet
+
+snippet s "Declare a set" i
+set<${1:int},${2:int}> ${3:s}${0}
+endsnippet
+
+snippet sii "Declare a Set" A
+set <int> ${1:s}${0}
 endsnippet
 	
 snippet m "Declare a Map" i
-map <${1:int},${2:int}> ${3:m}${0};
+map <${1:int},${2:int}> ${3:m}${0}
+endsnippet
+
+snippet mii "Declare a Map from integers to integers" A
+map <int,int> ${1:m}${0}
 endsnippet
 
 snippet debug "Wrap code to debug" b
-#ifdef IRFAN_DEBUG"
+#ifdef IRFAN_DEBUG
 	${VISUAL}${0}
 #endif
 endsnippet
 
 snippet rout "Red Output cout" A
-cout << \"\\033[48;5;196m\\033[38;5;15m\" << ${0} << \"\\033[0m\" << endl;
+cout << "\033[48;5;196m\033[38;5;15m" << ${0} << "\033[0m" << endl;
 endsnippet
