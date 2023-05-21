@@ -1,8 +1,27 @@
-snippet inp "Input in to an vector" b
-vector<${1:int}> ${2:v}(${3:n})
-for(int i = 0; i < $3; i++)
+snippet vin "Input in to an vector" b
+int ${1:n};
+cin >> $1;
+vector<${2:int}> ${3:v}($1);
+for(int i = 0; i < $1; i++)
 {
-	cin >> $2[i];
+	cin >> $3[i];
+}
+${0}
+endsnippet
+
+snippet vout "Output a vector or set" b
+for(auto &Z: ${1:v})
+{
+	cout << Z << " ";
+}
+cout << "\n";
+${0}
+endsnippet
+
+snippet mout "Output a map" b
+for(auto &Z: ${1:m})
+{
+	cout << Z.first << " " << Z.second << "\n";
 }
 ${0}
 endsnippet
@@ -19,6 +38,13 @@ endsnippet
 
 snippet fori "For Loop with i" A
 for(int i = 0; i < ${1:count}; i++) 
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet forj "For Loop with j" A
+for(int j = 0; j < ${1:count}; j++) 
 {
 	${VISUAL}${0}
 }
