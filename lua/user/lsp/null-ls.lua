@@ -15,7 +15,7 @@ null_ls.setup({
 		formatting.stylua,
     diagnostics.cppcheck.with({
         method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
-        extra_args = {"--suppress=unusedVariable","--suppress=variableScope","--suppress=constVariable"},
+        extra_args = {"--suppress=unusedVariable","--suppress=variableScope","--suppress=constVariable","--suppress=unreadVariable"},
     }),
     formatting.codespell.with({filetypes = {'tex','markdown'}}),
     hover.dictionary.with({filetypes = {'tex','markdown'}}),
