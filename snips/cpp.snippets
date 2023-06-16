@@ -89,6 +89,18 @@ snippet mii "Declare a Map from integers to integers" A
 map <int,int> ${1:m}${0}
 endsnippet
 
+snippet umap "Declare an unordered map" i
+unordered_map <${1:int},${2:int}> ${3:m}${0}
+endsnippet
+
+snippet umapi "Declare an unordered_map from integers to integers" A
+unordered_map <int,int> ${1:m}${0}
+endsnippet
+
+snippet uniq "STL Unique" i
+${1:v}.resize(unique($1.begin(),$1.end())-$1.begin());${0}
+endsnippet
+
 snippet debug "Wrap code to debug" b
 #ifdef IRFAN_DEBUG
 	${VISUAL}${0}
