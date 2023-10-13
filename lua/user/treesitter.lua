@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+require 'nvim-treesitter.install'.compilers = { 'zig' }
+
 configs.setup {
   ensure_installed = { "cpp", "lua", "python" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   ignore_install = { "" }, -- List of parsers to ignore installing
