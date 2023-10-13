@@ -9,7 +9,7 @@ if not lspconfig_status_ok then
 end
 
 local servers = {
-  "sumneko_lua",
+  "lua_ls",
   "clangd",
   "texlab",
   "ltex",
