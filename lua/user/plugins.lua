@@ -86,8 +86,11 @@ return packer.startup(function(use)
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   use "ray-x/lsp_signature.nvim"
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    as = 'lsp_lines.nvim',
+  })
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
