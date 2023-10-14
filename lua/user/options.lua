@@ -44,5 +44,5 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
-vim.o.guifont = "FantasqueSansM Nerd Font Mono Regular:h4"
-vim.g.neovide_scale_factor = 0.70
+vim.o.guifont = "FantasqueSansM Nerd Font:h10"
+vim.g.neovide_scale_factor = 1
