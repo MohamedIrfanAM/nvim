@@ -31,7 +31,7 @@ vim.cmd [[
     autocmd TextChanged *.ans[1-9],*.in[1-9] silent! %s/\r$/
     let last_cursor_found = 1
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | else |let last_cursor_found = 0 |endif
-    autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/while(tst--)\<CR>:\<BS>\<ESC>2j2li") | endif
+    autocmd BufReadPost *.cpp if last_cursor_found == 0 | call feedkeys("/void solve()\<CR>:\<BS>\<ESC>2jla") | endif
     autocmd BufWinEnter *.ans[1-9],*.in[1-9] set nobuflisted
     autocmd BufEnter * call CloseCpBoosterBuffer()
     autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no
