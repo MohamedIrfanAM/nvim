@@ -26,8 +26,8 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Comments --
-keymap("n","<C-_>",":lua require('Comment.api').toggle.linewise()<CR>" ,opts)
-keymap("v","<C-_>",":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>" ,opts)
+keymap("n","<C-/>",":lua require('Comment.api').toggle.linewise()<CR>" ,opts)
+keymap("v","<C-/>",":lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>" ,opts)
 
 -- Resize with arrows --
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
